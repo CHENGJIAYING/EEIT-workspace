@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>table</title>
+    <style>
+        .tb1 {
+            width: 600px;
+            border: 3px solid black;
+            border-collapse: collapse;
+        }
+
+        td,
+        th {
+            border: 2px solid brown;
+        }
+        thead{
+            background-color: cyan;
+            color: black;
+            font-family: 標楷體;
+            font-size: 1em;
+        }
+        tbody{
+            background-color: aquamarine;
+            text-align: center;
+        }
+        tbody tr:nth-child(2n){
+            background-color: beige;
+        }
+        tbody tr:hover{
+            background-color: brown;
+            color: rgb(240, 235, 244);
+        }
+    </style>
+</head>
+
+<body>
+    <h2>div裡文字垂直對齊</h2>
+    <div style="width:150px ; height: 100px;border: 1px solid red;line-height: 100px;">高度有限制</div>
+    <hr>
+    <div></div>
+    <table class="tb1">
+        <caption><h2>我的表格</h2></caption>
+        <thead>
+            <tr>
+                <th>欄位1</th>
+                <th>欄位2</th>
+                <th>欄位3</th>
+                <th>欄位4</th>
+            </tr>
+            <tr>
+                <th colspan="2">欄位1</th>
+                <!-- <th>欄位2</th> -->
+                <th colspan="2">欄位3</th>
+                <!-- <th>欄位4</th> -->
+            </tr>
+            <tr>
+                <td colspan="4">-----col合併儲存格----</td>
+                <!-- <td>2</td> -->
+                <!-- <td>3</td> -->
+                <!-- <td>4</td> -->
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td rowspan="3">----row合併儲存格---</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <!-- <td>1</td> -->
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <!-- <td>1</td> -->
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>

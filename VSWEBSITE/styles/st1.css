@@ -1,0 +1,34 @@
+h1.st1{
+    color: red;
+    font-style: italic;
+    font-weight: 3000;
+}
+.st2{
+    color: rgb(116, 243, 25);
+    /* font-family:標楷體 ; */
+}
+.col1{
+    color: rgb(249, 22, 215);
+}
+.col2{
+    color: brown;
+}
+.sty1{
+    font-style: italic;
+}
+.size1{
+    font-size: 2em;
+}
+.under1{
+    text-decoration: line-through;
+}
+.thecol1{
+    color: green;
+}
+#thecol2{
+    color: purple;
+}
+p{
+    color: pink;
+    font-size: 2em;
+}

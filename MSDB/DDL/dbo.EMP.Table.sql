@@ -1,0 +1,32 @@
+USE [DemoLab]
+GO
+/****** Object:  Table [dbo].[EMP]    Script Date: 2022/3/19 ¤U¤È 01:44:46 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[EMP]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[EMP](
+	[EMPNO] [int] NOT NULL,
+	[ENAME] [nvarchar](10) NULL,
+	[JOB] [nvarchar](9) NULL,
+	[MGR] [int] NULL,
+	[HIREDATE] [datetime] NULL,
+	[SAL] [decimal](7, 2) NULL,
+	[COMM] [decimal](7, 2) NULL,
+	[DEPTNO] [int] NULL,
+ CONSTRAINT [PK_EMP] PRIMARY KEY CLUSTERED 
+(
+	[EMPNO] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_DEPTNO]') AND parent_object_id = OBJECT_ID(N'[dbo].[EMP]'))
+ALTER TABLE [dbo].[EMP]  WITH CHECK ADD  CONSTRAINT [FK_DEPTNO] FOREIGN KEY([DEPTNO])
+REFERENCES [dbo].[DEPT] ([DEPTNO])
+GO
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_DEPTNO]') AND parent_object_id = OBJECT_ID(N'[dbo].[EMP]'))
+ALTER TABLE [dbo].[EMP] CHECK CONSTRAINT [FK_DEPTNO]
+GO

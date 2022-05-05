@@ -1,0 +1,20 @@
+.list1{
+    list-style-type:none;
+}
+.list2{
+    list-style-type: upper-alpha;
+    list-style-image: url("../images/a1.jpg");
+}
+.in{
+    background-color: green;
+    list-style-position: inside;
+}
+.out{
+    background-color: green;
+    list-style-position: outside;
+}
+.listA{
+    list-style-type: upper-roman;
+    border: 30px ridge green;
+    border-radius: 20px 0 0 20px;
+}

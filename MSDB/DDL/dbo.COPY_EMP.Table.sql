@@ -1,0 +1,31 @@
+USE [DemoLab]
+GO
+/****** Object:  Table [dbo].[COPY_EMP]    Script Date: 2022/3/19 ¤U¤È 01:44:46 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[COPY_EMP]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[COPY_EMP](
+	[EMPLOYEE_ID] [int] NOT NULL,
+	[FIRST_NAME] [nvarchar](20) NULL,
+	[LAST_NAME] [nvarchar](25) NULL,
+	[EMAIL] [nvarchar](25) NULL,
+	[PHONE_NUMBER] [nvarchar](20) NULL,
+	[HIRE_DATE] [datetime] NULL,
+	[JOB_ID] [nvarchar](10) NULL,
+	[SALARY] [decimal](8, 2) NULL,
+	[COMMISSION_PCT] [decimal](2, 2) NULL,
+	[MANAGER_ID] [int] NULL,
+	[DEPARTMENT_ID] [int] NULL
+) ON [PRIMARY]
+END
+GO
+/****** Object:  Index [COPY_EMP_CIDX_SALARY]    Script Date: 2022/3/19 ¤U¤È 01:44:46 ******/
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[COPY_EMP]') AND name = N'COPY_EMP_CIDX_SALARY')
+CREATE CLUSTERED INDEX [COPY_EMP_CIDX_SALARY] ON [dbo].[COPY_EMP]
+(
+	[SALARY] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO

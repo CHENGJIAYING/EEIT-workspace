@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>web表單</title>
+    <style>
+     
+        .st1 {
+            width: 450px;
+            border-bottom: 3px dashed grey;
+            margin: 20px;
+            padding-bottom: 10px;
+        }
+
+        .button {
+            width: 450px;
+            margin: 20px;
+            text-align: center;
+        }
+
+        .t1 {
+            width: 100px;
+            float: left;
+            text-align: right;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="#" method="get" enctype="multipart/form-data">
+        <div class="st1">
+            <label for="account" class="t1">姓名:</label><input type="text" id="account" name="account" autofocus
+                placeholder="" autocomplete="off" size="10">
+        </div>
+        
+        <div class="st1">
+            <label for="" class="t1">畢業學校:</label>
+            <input type="text" id="" name="school"  >
+        </div>
+        <div class="st1">
+            <label for="" class="t1">畢業科系:</label>
+            <input type="text" name="department" size="30">
+        </div>
+        <div class="st1">
+            <label for="" class="t1">性別:</label>
+            <input type="radio" name="gender" value="male" id="m1"><label for="m1">男</label>
+            <!-- 用下方的 -->
+            <label>
+                <input type="radio" name="gender" value="fmale">女
+            </label>
+        </div>
+        <div class="st1">
+            <label class="t1">交通工具:</label>
+            <label>
+                <input type="checkbox" name="Transportation" value="bike" id="">腳踏車
+            </label>
+            <label>
+                <input type="checkbox" name="Transportation" value="car" id="">汽車
+            </label>
+            <label>
+                <input type="checkbox" name="Transportation" value="train" id="">火車
+            </label>
+            <label>
+                <input type="checkbox" name="Transportation" value="bus" id="">公車
+            </label>
+        </div>
+        <div class="button">
+            <input type="submit" value="送出">
+            <input type="reset" value="清除">
+        </div>
+    </form>
+</body>
+
+</html>

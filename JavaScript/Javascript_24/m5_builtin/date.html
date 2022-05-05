@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Date Object Demo</title>
+<script>
+	var now = new Date();//先取時間
+	var year = now.getFullYear(); //now.get 方法 取年
+	var month = now.getMonth() + 1;//now.get 方法 取月
+	var date = now.getDate();//now.get 方法 取日
+	var day = now.getDay();//now.get 方法 取星期
+	var hour = now.getHours();//now.get 方法 取小時
+	var minute = now.getMinutes();//now.get 方法 取分
+	var second = now.getSeconds();//now.get 方法 取秒
+	
+	// switch (day) {
+	// 	case 0: weekday="日"; break;
+	// 	case 1: weekday="一"; break;
+	// 	case 2: weekday="二"; break;
+	// 	case 3: weekday="三"; break;
+	// 	case 4: weekday="四"; break;
+	// 	case 5: weekday="五"; break;
+	// 	case 6: weekday="六"; break;
+	// }
+
+	
+	document.write("今天是 " + year + "年" + month + "月" + date + "日","<br>");
+	document.write("今天是星期 " + day +"<br>");
+	document.write("現在時間是 " + hour + ":" + minute + ":" + second,"<br>");
+	document.write("現在時間的毫秒數 " + now.getTime(),"<br>");
+	
+	var weekdays = ["日","一","二","三","四","五","六"];
+	document.write("今天是星期 " + weekdays[day] +"<br>");
+
+	var weekdays ="日一二三四五六";
+	document.write("今天是星期 " + weekdays[day] +"<br>");
+
+	var a = "123456789"
+	document.write(a[1] +"<br>");
+	
+	var next5 = new Date();
+	next5.setDate(now.getDate()+5);
+	document.write(next5,"<br>");
+</script>
+</head>
+</html>

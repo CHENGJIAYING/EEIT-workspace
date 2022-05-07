@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8"/>
+<title>Web Homework</title>
+<style>
+        .st1 {
+            width: 450px;
+            border-bottom: 3px dashed grey;
+            margin: 20px;
+            padding-bottom: 10px;
+        }
+
+        .button {
+            width: 450px;
+            margin: 20px;
+            text-align: center;
+        }
+
+        .t1 {
+            width: 100px;
+            float: left;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+	<h1>RegisterForm</h1>
+	<form ACTION="./homework1" method="get" enctype="multipart/form-data">
+        <div class="st1">
+            <label for="name" class="t1">姓名:</label><input type="text" id="name" name="name" autofocus
+                placeholder="" autocomplete="off" size="10">
+        </div>
+        
+        <div class="st1">
+            <label for="" class="t1">畢業學校:</label>
+            <input type="text" id="" name="school"  >
+        </div>
+        <div class="st1">
+            <label for="" class="t1">畢業科系:</label>
+            <input type="text" name="department" size="30">
+        </div>
+        <div class="st1">
+            <label for="" class="t1">性別:</label>
+            <input type="radio" name="gender" value="男性" id="m1"><label for="m1">男</label>
+            <!-- 用下方的 -->
+            <label>
+                <input type="radio" name="gender" value="女性">女
+            </label>
+        </div>
+        <div class="st1">
+            <label class="t1">交通工具:</label>
+            <label>
+                <input type="checkbox" name="Transportation" value="腳踏車" id="">腳踏車
+            </label>
+            <label>
+                <input type="checkbox" name="Transportation" value="汽車" id="">汽車
+            </label>
+            <label>
+                <input type="checkbox" name="Transportation" value="火車" id="">火車
+            </label>
+            <label>
+                <input type="checkbox" name="Transportation" value="公車" id="">公車
+            </label>
+        </div>
+        <div class="button">
+            <input type="submit" value="送出">
+            <input type="reset" value="清除">
+        </div>
+    </form>
+</body>
+
+</body>
+</html>

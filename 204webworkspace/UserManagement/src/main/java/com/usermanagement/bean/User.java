@@ -1,26 +1,36 @@
 package com.usermanagement.bean;
 
-public class User {
-	private int id;
-	private String name;
+import java.io.Serializable;
+
+public class User implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private int memno;
+	private String mname;
 	private String email;
-	public User(int id, String name, String email) {
+	
+	public User() {
 		super();
-		this.id = id;
-		this.name = name;
+	}
+	public User(int memno, String mname, String email) {
+		super();
+		this.memno = memno;
+		this.mname = mname;
 		this.email = email;
 	}
-	public int getId() {
-		return id;
+	public int getMemno() {
+		return memno;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setMemno(int memno) {
+		this.memno = memno;
 	}
-	public String getName() {
-		return name;
+	public String getMname() {
+		return mname;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setMname(String mname) {
+		this.mname = mname;
 	}
 	public String getEmail() {
 		return email;

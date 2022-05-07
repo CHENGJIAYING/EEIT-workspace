@@ -3,7 +3,7 @@
 import java.io.*;
 
 public class Dept implements Serializable{
-
+	
     private int deptno;
     private String dname;
  

@@ -1,9 +1,14 @@
 package com.usermanagement.dao;
 
-public class UserDao {
+import java.util.List;
 
-	private static final String DB_URL = 
-					"jdbc:sqlserver://localhost:1433;databaseName=jdbc";
-	private static final String USER = "sa";
-	private static final String PASSWORD = "passw0rd";
+import com.usermanagement.bean.User;
+
+public interface UserDao {
+	
+	public void doCreate(User user); 
+	public List<User> findAll()throws Exception;
+	public User findByMemno(int memno)throws Exception; 
+	public void deleteByMemno(int memno);
+	public boolean doupdate(User user)throws Exception; 
 }

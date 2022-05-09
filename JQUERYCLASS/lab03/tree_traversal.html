@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tree_traversal</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        table{
+            width: 500px;
+            height: 500px;
+            border: 2px solid black;
+            margin: auto;
+        }
+        td{
+            border: 1px solid black;
+            width: 90px;
+        }
+        .box{
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: pink;
+            margin: auto;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .box1{
+            width: 25px;
+            height: 25px;
+            border-radius:50% ;
+            background-color: greenyellow;
+            margin: auto;
+            
+        }
+    </style>
+
+</head>
+<body>
+    <header>
+        <h1>tree_traversal</h1>
+    </header>
+    <div class="container">
+        <table>
+            <tr>
+                <td class="stop"></td>
+                <td></td>
+                <td>
+                    <div class="box">
+                        <div class="box1"></div>
+                    </div>
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="stop"></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <div class="box"></div>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <div class="box"></div>
+                </td>
+                <td class="stop"> </td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="box"></div>
+                </td>
+                <td class="stop"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td class="stop"></td>
+                <td>
+                    <div class="box"></div>
+                </td>
+                <td></td>
+            </tr>
+        </table>
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            //children()
+            $('td').on('click',function(){
+                // $(this).children('.box').css('background','red')
+                // $(this).nextUntil('.stop').css('background','yellow')
+                 $(this).next().css('background','yellow')
+                    .end().prev().css('background','blue')
+
+
+            })
+            // $('.box').on('click',function(){
+            //     $(this).parentsUntil('table').css('background','purple')
+            // })
+
+
+            
+        })
+    </script>
+</body>
+</html>

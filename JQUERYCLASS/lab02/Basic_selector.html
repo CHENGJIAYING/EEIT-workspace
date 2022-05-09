@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic_selector</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        table{
+            border: 2px solid black;
+            width: 400px;
+            height: 400px;
+            margin: 10 auto;
+        }
+        td{
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Basic_selector</h1>
+    </header>
+    <div class="container">
+        <table>
+        <tr>
+            <td class="not">1</td>
+            <td>2</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td class="not">2</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td class="not">3</td>
+        </tr>
+    </table>
+    <ul id="list">
+        <li class="not">list item</li>
+        <li>list item</li>
+        <li>list item</li>
+        <li class="not">list item</li>
+    </ul>
+    <br>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi nihil nobis iste atque, molestias obcaecati magni esse eius harum quisquam praesentium blanditiis repellendus ad dolorem consequatur assumenda! Fuga, amet itaque.</p>
+    <p>Hello Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi nihil nobis iste atque, molestias obcaecati magni esse eius harum quisquam praesentium blanditiis repellendus ad dolorem consequatur assumenda! Fuga, amet itaque.</p>
+    <p><span>EEIT45</span>ipsum dolor sit amet consectetur adipisicing elit. Commodi nihil nobis iste atque, molestias obcaecati magni esse eius harum quisquam praesentium blanditiis repellendus ad dolorem consequatur assumenda! Fuga, amet itaque.</p>
+    <p></p>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            $('li').eq(2).css('background-color','pink')
+            $('li').first().css('background-color','lightgreen')
+            $('li').last().css('background-color','yellow')
+            $('li').not('.not').css('background-color','blue')
+        })
+
+
+
+
+        //child filter
+        /*
+        $(function(){
+            $('tr td:first-child').css('background-color','pink')
+            $('tr td:last-child').css('background-color','blue')
+            $('tr td:nth-child(2)').css('background-color','yellow')
+            $('tr td:only-child').css('background-color','red')
+        })
+        */
+        $(function(){
+            $('p:contains("Hello")').css('background','yellow')
+            $('P:has(span)').css('background','blue')
+            $('P:parent').css('background','green')
+            $('P:empty').text('empty text')
+        })
+
+
+        $(function(){
+            let all=$('*')
+            let table=$('table')
+            let container=$('.container')
+            // console.log('container')
+            console.log($('#list,div'))
+            /*
+            $('td:eq(1)').css('background','pink')
+            $('td:even').css('background','lightgreen')
+            $('td:odd').css('background','lightblue')
+            $('td:lt(3)').css('background','greenyellow')
+            $('td:gt(5)').css('background','blue')
+            $('td:first').css('background','white')
+            $('td:last').css('background','black')
+            $('td:not(.not)').css('background','red')
+            */
+        })
+    </script>
+
+
+
+</body>
+</html>

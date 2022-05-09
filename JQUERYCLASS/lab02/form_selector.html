@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form_selector</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <header>
+        <h1>form_selector</h1>
+    </header>
+    <div class="container">
+        <form >
+            <div>
+                <label for="">Test</label>
+                <input type="text"  value="請輸入">
+            </div>
+            <div>
+                <label for="">radio group</label>
+                <input type="radio" id="radioA" >A
+                <input type="radio" id="radioB" checked>B
+                <input type="radio" id="radioC" disabled>C
+
+            </div>
+            <div>
+                <Select name="" id="">
+                    <Option value="A">A</Option>
+                    <Option value="A">C</Option>
+                    <Option value="B" selected>B</Option>
+
+                </Select>
+            </div>
+            <hr>
+            <input type="button"name=""id="checked" value="checked">
+            <input type="button"name=""id="selected" value="selected">
+            <input type="button"name=""id="disabled" value="disabled">
+            <input type="button" name="" id="text" value=":text">
+            <input type="button" name="" id="input" value=":input">
+        </form>
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            $('#checked').on('click',function(){
+                let checked=(':checked')
+                console.log(checked)
+            })
+            $('#selected').on('click',function(){
+                $(':selected').css('background-color','red')
+                
+            })
+            $('#disabled').on('click',function(){
+                let disabled=$(':disabled')
+                console.log(disabled)
+            })
+            $('#text').on('click',function(){
+                $(':text').css('background','pink')
+            })
+            $('#input').on('click',function(){
+                $(':input').css('background','yellow')
+            })
+        })
+    </script>
+</body>
+</html>

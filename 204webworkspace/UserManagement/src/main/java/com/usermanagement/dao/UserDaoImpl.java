@@ -15,6 +15,17 @@ import javax.sql.DataSource;
 import com.usermanagement.bean.User;
 
 public class UserDaoImpl implements UserDao {
+	
+	
+	
+	private final String sql_create = "INSERT INTO users (userid,uname,uemail,uphone,ubirth,ugender,uaddess) VALUES(?,?,?,?,?,?,?)";
+	private final String sql_findall = "SELECT * FROM users";
+	private final String sql_findbyuserid = "SELECT * FROM users WHERE userid=?";
+	private final String sql_update = "UPDATE users SET uname = ?,uemail = ?,uphone = ?,ubirth = ?,ugender = ?,uaddress = ? WHERE userId = ?";
+	private final String sql_delete = "DELETE FROM users WHERE userid = ?";
+	
+	
+	
 	private Connection con;
 	private DataSource ds;
 	private PreparedStatement pstat;
@@ -23,10 +34,17 @@ public class UserDaoImpl implements UserDao {
 		try {
 			Context initialContext = new InitialContext();
 			Context envContext = (Context) initialContext.lookup("java:/comp/env");
-			ds = (DataSource) envContext.lookup("jdbc/UserDB");
+			ds = (DataSource) envContext.lookup("jdbc/BakeYourLife");
 
 		} catch (NamingException e) {
 			e.printStackTrace();
+		}
+	}
+	public boolean isConnectOK() {
+		try (Connection con = ds.getConnection()){
+			return !con.isClosed();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
 		}
 	}
 
@@ -34,12 +52,15 @@ public class UserDaoImpl implements UserDao {
 	public void doCreate(User user) {
 
 		try {
-			String sql_create = "INSERT INTO users (memno,mname,email)";
 			con = ds.getConnection();
 			pstat = con.prepareStatement(sql_create);
-			pstat.setInt(1, user.getMemno());
-			pstat.setString(2, user.getMname());
-			pstat.setString(3, user.getEmail());
+			pstat.setInt(1, user.getUserid());
+			pstat.setString(2, user.getUname());
+			pstat.setString(3, user.getUemail());
+			pstat.setString(4, user.getUphone());
+			pstat.setString(5, user.getUbirth());
+			pstat.setString(6, user.getUgender());
+			pstat.setString(7, user.getUaddess());
 			pstat.executeUpdate();
 			pstat.close();
 		} catch (SQLException e) {
@@ -56,19 +77,22 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public List<User> findAll() throws Exception {
+	public List<User> findAll() {
 
 		List<User> list = new ArrayList<User>();
 		try {
-			String sql_findall = "SELECT * FROM users";
 			con = ds.getConnection();
 			pstat = con.prepareStatement(sql_findall);
 			ResultSet rs = pstat.executeQuery();
 			while (rs.next()) {
 				User user = new User();
-				user.setMemno(rs.getInt("memno"));
-				user.setMname(rs.getString("mname"));
-				user.setEmail(rs.getString("email"));
+				user.setUserid(rs.getInt("userid"));
+				user.setUname(rs.getString("uname"));
+				user.setUemail(rs.getString("uemail"));
+				user.setUphone(rs.getString("uphone"));
+				user.setUbirth(rs.getString("ubirth"));
+				user.setUgender(rs.getString("ugender"));
+				user.setUaddess(rs.getString("uaddess"));
 				list.add(user);
 
 			}
@@ -90,19 +114,21 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public User findByMemno(int memno) throws Exception {
+	public User findByUserid(int userid)  {
 		User user = new User();
 		try {
-			String sql_findbymemno = "SELECT * FROM users WHERE memno=?";
 			con = ds.getConnection();
-			pstat = con.prepareStatement(sql_findbymemno);
-			pstat.setInt(1, memno);
+			pstat = con.prepareStatement(sql_findbyuserid);
+			pstat.setInt(1, userid);
 			ResultSet rs = pstat.executeQuery();
 			while (rs.next()) {
-				user.setMemno(rs.getInt("memno"));
-				user.setMname(rs.getString("mname"));
-				user.setEmail(rs.getString("email"));
-				
+				user.setUserid(rs.getInt("userid"));
+				user.setUname(rs.getString("uname"));
+				user.setUemail(rs.getString("uemail"));
+				user.setUphone(rs.getString("uphone"));
+				user.setUbirth(rs.getString("ubirth"));
+				user.setUgender(rs.getString("ugender"));
+				user.setUaddess(rs.getString("uaddess"));
 
 			}
 			rs.close();
@@ -122,16 +148,64 @@ public class UserDaoImpl implements UserDao {
 	}
 	
 	@Override
-	public void deleteByMemno(int memno) {
-		// TODO Auto-generated method stub
-
+	public void doUpdate(User user)  {
+		try {
+			con = ds.getConnection();
+			pstat = null;
+			pstat = con.prepareStatement(sql_update);
+			pstat.setString(1, user.getUname());
+			pstat.setString(2, user.getUemail());
+			pstat.setString(3, user.getUphone());
+			pstat.setString(4, user.getUbirth());
+			pstat.setString(5, user.getUgender());
+			pstat.setString(6, user.getUaddess());
+			pstat.setInt(7, user.getUserid());
+			pstat.executeUpdate();
+			pstat.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(con!=null) {
+					con.close();					
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
 	}
 
 	@Override
-	public boolean doupdate(User user) throws Exception {
-		// TODO Auto-generated method stub
-		return false;
+	public void deleteByUserid(Integer userid) {
+		try 
+		{
+			con = ds.getConnection();
+			pstat= con.prepareStatement(sql_delete);
+			pstat.setInt(1, userid);
+			pstat.execute();
+			pstat.close();
+		} catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}finally 
+		{
+			try 
+			{
+				if(con!=null) 
+				{
+					con.close();					
+				}
+			} catch (SQLException e) 
+			{
+				e.printStackTrace();
+			}
+		}
+		
+	}		
 	}
 
 
-}
+
+
+	

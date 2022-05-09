@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        #div1{
+            height: 100px;
+            width: 500px;
+            padding: 10px;
+            border: 1px solid black;
+            background-color: lightblue;
+        }
+        p{
+            background-color: lightcoral;
+        }
+        span{
+            background-color: lightgreen;
+            font-style:italic ;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Event</h1>
+    </header>
+    <div class="container">
+        <input type="text" id="input">
+        <br>
+        <textarea name="" id="textarea" cols="30" rows="10"></textarea>
+        <hr>
+        <h3>preventDefault()</h3>
+        <a href="https://jquery.com/">jQuery.com</a>
+        <div id="target"></div>
+        <hr>
+        <div id="div1">
+            div element
+            <p>
+                p element
+                <span>span element</span>
+            </p>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            $('#input').on('click',function(){
+                // console.log(event.type)
+                // console.log(event.which)
+            })
+            $('#input').click(function(){
+                console.log(event.type)
+            })
+
+            $('#textarea').mousemove(function(){
+                let name="gary"
+                // console.log('name:'+name+',pageX:'+)
+                // console.log(`name:${name},pageX:${event.pageX}`)
+            })
+            $('a').on('click',function(){
+                event.preventDefault()
+                $('#target').text(`defalut ${event.type} prevented`)
+            })
+            $('div').on('click',function(){
+                console.log('this is div element was click')
+            })
+            $('p').on('click',function(){
+                event.stopPropagation()
+                console.log('this is p element was click')
+            })
+            $('span').on('click',function(){
+                console.log('this is span element was click')
+            })
+        })
+    </script>
+</body>
+</html>

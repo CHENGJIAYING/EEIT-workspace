@@ -7,8 +7,8 @@ import com.usermanagement.bean.User;
 public interface UserDao {
 	
 	public void doCreate(User user); 
-	public List<User> findAll()throws Exception;
-	public User findByMemno(int memno)throws Exception; 
-	public void deleteByMemno(int memno);
-	public boolean doupdate(User user)throws Exception; 
+	public List<User> findAll();
+	public User findByUserid(int Userid); 
+	public void deleteByUserid(Integer Userid);
+	public void doUpdate(User user); 
 }

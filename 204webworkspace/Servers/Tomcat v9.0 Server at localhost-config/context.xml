@@ -22,10 +22,10 @@
                url="jdbc:sqlserver://140.115.158.222:1433;databaseName=DemoLab"/> -->
 
 
-	<Resource name="jdbc/EmployeeDB" auth="Container" type="javax.sql.DataSource"
+	<Resource name="jdbc/BakeYourLife" auth="Container" type="javax.sql.DataSource"
                maxTotal="100" maxIdle="30" maxWaitMillis="10000"
                username="sa" password="passw0rd" driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
-               url="jdbc:sqlserver://localhost:1433;databaseName=DemoLab"/>
+               url="jdbc:sqlserver://localhost:1433;databaseName=BakeYourLife"/>
 	
     <!-- Default set of monitored resources. If one of these changes, the    -->
     <!-- web application will be reloaded.                                   -->

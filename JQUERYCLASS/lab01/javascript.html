@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>class01</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <header>
+        <h1>Javascript</h1>
+    </header>
+    <div class="container">
+        <h3 id="target">Javascript</h3>
+        <hr>
+        <h3 class="targetall">Javascript</h3>
+        <h3 class="targetall">Javascript</h3>
+        <h3 class="targetall">Javascript</h3>
+    </div>
+    <script>
+        let h3=document.querySelector('#target')
+        console.log(h3)
+        h3.addEventListener('mouseenter',function(){
+            h3.style.color='yellow'
+        })
+        h3.addEventListener('mouseleave',function(){
+            h3.style.color='black'
+        })
+        let h3ALL=document.querySelectorAll('.targetall')
+        console.log(h3ALL)
+        for (let i=0; i < h3ALL.length; i++) {
+            h3ALL[i].addEventListener('mouseenter',function(){
+                h3ALL[i].style.color='blue'
+            })
+            h3ALL[i].addEventListener('mouseleave',function(){
+                h3ALL[i].style.color='black'
+            })
+            
+        }
+    </script>
+</body>
+</html>

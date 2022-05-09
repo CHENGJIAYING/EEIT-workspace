@@ -21,7 +21,7 @@ public class DeptServletDS extends HttpServlet {
       ctxt = new InitialContext();
 
       //使用JNDI API找到DataSource
-      ds = ( DataSource ) ctxt.lookup("java:comp/env/jdbc/EmployeeDB");
+      ds = ( DataSource ) ctxt.lookup("java:comp/env/jdbc/BakeYourLife");
      
       //向DataSource要Connection
       conn = ds.getConnection();
@@ -38,6 +38,7 @@ public class DeptServletDS extends HttpServlet {
 
       if (request.getParameter("UPDATE") != null) {
         processUpdate(request,response,deptDAO);
+        
       } 
     } catch (NamingException ne) {
       System.out.println("Naming Service Lookup Exception");  

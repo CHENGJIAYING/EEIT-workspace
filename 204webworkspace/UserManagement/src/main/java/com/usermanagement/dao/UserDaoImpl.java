@@ -7,6 +7,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import com.usermanagement.bean.User;
@@ -23,16 +26,15 @@ public class UserDaoImpl implements UserDao {
 	private DataSource ds;
 	private PreparedStatement pstat;
 
-	public UserDaoImpl(Connection con) {
-		this.con = con;
-	}
+	public UserDaoImpl() {
+		try {
+			Context initialContext = new InitialContext();
+			Context envContext = (Context) initialContext.lookup("java:/comp/env");
+			ds = (DataSource) envContext.lookup("jdbc/BakeYourLife");
 
-	@Override
-	public Connection getConnection() throws Exception {
-
-		DatabaseBean databaseBean = new DatabaseBean();
-		return databaseBean.getConnection();
-
+		} catch (NamingException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override

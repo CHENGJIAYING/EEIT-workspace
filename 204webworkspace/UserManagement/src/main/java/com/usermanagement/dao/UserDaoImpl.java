@@ -7,45 +7,32 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import com.usermanagement.bean.User;
 
 public class UserDaoImpl implements UserDao {
-	
-	
-	
+
 	private final String sql_create = "INSERT INTO users (userid,uname,uemail,uphone,ubirth,ugender,uaddess) VALUES(?,?,?,?,?,?,?)";
 	private final String sql_findall = "SELECT * FROM users";
 	private final String sql_findbyuserid = "SELECT * FROM users WHERE userid=?";
 	private final String sql_update = "UPDATE users SET uname = ?,uemail = ?,uphone = ?,ubirth = ?,ugender = ?,uaddress = ? WHERE userId = ?";
 	private final String sql_delete = "DELETE FROM users WHERE userid = ?";
-	
-	
-	
+
 	private Connection con;
 	private DataSource ds;
 	private PreparedStatement pstat;
 
-	public UserDaoImpl() {
-		try {
-			Context initialContext = new InitialContext();
-			Context envContext = (Context) initialContext.lookup("java:/comp/env");
-			ds = (DataSource) envContext.lookup("jdbc/BakeYourLife");
-
-		} catch (NamingException e) {
-			e.printStackTrace();
-		}
+	public UserDaoImpl(Connection con) {
+		this.con = con;
 	}
-	public boolean isConnectOK() {
-		try (Connection con = ds.getConnection()){
-			return !con.isClosed();
-		} catch (SQLException e) {
-			throw new RuntimeException(e);
-		}
+
+	@Override
+	public Connection getConnection() throws Exception {
+
+		DatabaseBean databaseBean = new DatabaseBean();
+		return databaseBean.getConnection();
+
 	}
 
 	@Override
@@ -63,6 +50,7 @@ public class UserDaoImpl implements UserDao {
 			pstat.setString(7, user.getUaddess());
 			pstat.executeUpdate();
 			pstat.close();
+
 		} catch (SQLException e) {
 		} finally {
 			try {
@@ -114,7 +102,7 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public User findByUserid(int userid)  {
+	public User findByUserid(int userid) {
 		User user = new User();
 		try {
 			con = ds.getConnection();
@@ -146,9 +134,10 @@ public class UserDaoImpl implements UserDao {
 		}
 		return user;
 	}
-	
+
 	@Override
-	public void doUpdate(User user)  {
+	public boolean doUpdate(User user) {
+		boolean rowupdated = false;
 		try {
 			con = ds.getConnection();
 			pstat = null;
@@ -161,51 +150,46 @@ public class UserDaoImpl implements UserDao {
 			pstat.setString(6, user.getUaddess());
 			pstat.setInt(7, user.getUserid());
 			pstat.executeUpdate();
+			rowupdated = pstat.executeUpdate() > 0;
 			pstat.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			try {
-				if(con!=null) {
-					con.close();					
+				if (con != null) {
+					con.close();
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
-		
+		return rowupdated;
+
 	}
 
 	@Override
-	public void deleteByUserid(Integer userid) {
-		try 
-		{
+	public boolean deleteByUserid(int userid) {
+		boolean rowDeleted = false;
+		try {
 			con = ds.getConnection();
-			pstat= con.prepareStatement(sql_delete);
+			pstat = con.prepareStatement(sql_delete);
 			pstat.setInt(1, userid);
 			pstat.execute();
+			rowDeleted = pstat.executeUpdate() > 0;
 			pstat.close();
-		} catch (SQLException e) 
-		{
+		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally 
-		{
-			try 
-			{
-				if(con!=null) 
-				{
-					con.close();					
+		} finally {
+			try {
+				if (con != null) {
+					con.close();
 				}
-			} catch (SQLException e) 
-			{
+			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
-		
-	}		
+		return rowDeleted;
+
 	}
 
-
-
-
-	
+}

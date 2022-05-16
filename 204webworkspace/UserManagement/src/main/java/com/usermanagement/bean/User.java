@@ -1,93 +1,126 @@
 package com.usermanagement.bean;
 
+
 import java.io.Serializable;
 
-public class User implements Serializable {
+public class User implements Serializable{
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
 	private int userid;
-	private String uname;
-	private String uemail;
-	private String uphone;
-	private String ubirth;
-	private String ugender;
-	private String uaddess;
-
+	private String username;
+	private String useremail;
+	private String userphone;
+	private String userbirth;
+	private String usergender;
+	private String useraddress;
+	
+	
 	public User() {
 		super();
 	}
 
-	public User(int userid, String uname, String uemail, String uphone, String ubirth, String ugender, String uaddess) {
+
+	public User(String username, String useremail, String userphone, String userbirth, String usergender,
+			String useraddress) {
+		super();
+		this.username = username;
+		this.useremail = useremail;
+		this.userphone = userphone;
+		this.userbirth = userbirth;
+		this.usergender = usergender;
+		this.useraddress = useraddress;
+	}
+
+
+	public User(int userid, String username, String useremail, String userphone, String userbirth, String usergender,
+			String useraddress) {
 		super();
 		this.userid = userid;
-		this.uname = uname;
-		this.uemail = uemail;
-		this.uphone = uphone;
-		this.ubirth = ubirth;
-		this.ugender = ugender;
-		this.uaddess = uaddess;
+		this.username = username;
+		this.useremail = useremail;
+		this.userphone = userphone;
+		this.userbirth = userbirth;
+		this.usergender = usergender;
+		this.useraddress = useraddress;
 	}
+
 
 	public int getUserid() {
 		return userid;
 	}
 
+
 	public void setUserid(int userid) {
 		this.userid = userid;
 	}
 
-	public String getUname() {
-		return uname;
+
+	public String getUsername() {
+		return username;
 	}
 
-	public void setUname(String uname) {
-		this.uname = uname;
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
-	public String getUemail() {
-		return uemail;
+
+	public String getUseremail() {
+		return useremail;
 	}
 
-	public void setUemail(String uemail) {
-		this.uemail = uemail;
+
+	public void setUseremail(String useremail) {
+		this.useremail = useremail;
 	}
 
-	public String getUphone() {
-		return uphone;
+
+	public String getUserphone() {
+		return userphone;
 	}
 
-	public void setUphone(String uphone) {
-		this.uphone = uphone;
+
+	public void setUserphone(String userphone) {
+		this.userphone = userphone;
 	}
 
-	public String getUbirth() {
-		return ubirth;
+
+	public String getUserbirth() {
+		return userbirth;
 	}
 
-	public void setUbirth(String ubirth) {
-		this.ubirth = ubirth;
+
+	public void setUserbirth(String userbirth) {
+		this.userbirth = userbirth;
 	}
 
-	public String getUgender() {
-		return ugender;
+
+	public String getUsergender() {
+		return usergender;
 	}
 
-	public void setUgender(String ugender) {
-		this.ugender = ugender;
+
+	public void setUsergender(String usergender) {
+		this.usergender = usergender;
 	}
 
-	public String getUaddess() {
-		return uaddess;
+
+	public String getUseraddress() {
+		return useraddress;
 	}
 
-	public void setUaddess(String uaddess) {
-		this.uaddess = uaddess;
+
+	public void setUseraddress(String useraddress) {
+		this.useraddress = useraddress;
 	}
+
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-
+	
 }

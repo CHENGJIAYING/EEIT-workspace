@@ -21,13 +21,7 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/javax.servlet/servlet-api -->
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>servlet-api</artifactId>
-			<version>2.5</version>
-			<scope>provided</scope>
-		</dependency>
+		
 		<!-- https://mvnrepository.com/artifact/com.microsoft.sqlserver/mssql-jdbc -->
 		<dependency>
 			<groupId>com.microsoft.sqlserver</groupId>
@@ -40,6 +34,18 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
+<!-- https://mvnrepository.com/artifact/org.webjars/bootstrap -->
+<dependency>
+    <groupId>org.webjars</groupId>
+    <artifactId>bootstrap</artifactId>
+    <version>4.3.1</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.w3c.css/sac -->
+<dependency>
+    <groupId>org.w3c.css</groupId>
+    <artifactId>sac</artifactId>
+    <version>1.3</version>
+</dependency>
 
 
 	</dependencies>

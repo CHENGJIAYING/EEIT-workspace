@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>on event</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <header>
+        <h1>on event</h1>
+    </header>
+    <div class="container">
+        <button id="btn">Button</button>
+        <hr>
+        <button id="hello">hello</button>
+        <button id="on">on</button>
+        <button id="off">off</button>
+        <button id="one">one</button>
+        <hr>
+        <button id="add">add</button>
+        <ul>
+            <li>item 1</li>
+            <li>item 2</li>
+           
+        </ul>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            let i = 3;
+            $('#add').on('click',function(){
+                $('ul').append(`<li>item ${i}</li>`)
+                i++
+            })
+        })
+        $(function(){
+            let sayHello=function(){
+                console.log('hello')
+            }
+            $('#on').on('click',function(){
+                $('#hello').on('click',sayHello)
+            })
+            $('#off').on('click',function(){
+                $('#hello').off('click',sayHello)
+            })
+            $('#one').on('click',function(){
+                console.log('one')
+
+            })
+
+
+
+
+
+            $('#btn').on('click mouseenter contextmenu',function(){
+
+                
+            })
+
+
+            $('#btn').on({
+                click:function(){
+                    console.log('click')
+                },dblclick:function(){
+                    console.log('dblclick')
+
+                },mouseenter:function(){
+                    console.log('mouseenter')
+
+                }
+            })
+        })
+    </script>
+</body>
+</html>

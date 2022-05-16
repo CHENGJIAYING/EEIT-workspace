@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>text</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <header>
+        <h1>text html val</h1>
+    </header>
+    <div class="container">
+        <h3 id="source">Hello jquery</h3>
+        <h3 id="target"></h3>
+        <button id="getText">getText</button>
+        <button id="setText">setText</button>
+        <br>
+        <p>
+            <b>click </b>to change the <span>html</span>
+        </p>
+        <hr>
+        <input type="number" id="num1">
+        <select name="" id="calculate">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+        </select>
+        <input type="number" id="num2">
+        <button id="result">=</button>
+        <input type="text" value="0" readonly id="show">
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        $(function () {
+            let gettext = "";
+            $('#getText').on('click', function () {
+                getText = $('#source').text()
+            })
+            $('#setText').on('click', function () {
+                $('#target').text(getText)
+            })
+            $('p').one('click', function () {
+                let String = $('p').html()
+                $(this).text(String)
+            })
+
+            $('result').on('click', function () {
+                let num1 = Number($('#num1').val())
+                let num2 = Number($('#num2').val())
+                let calculate = $('#calculate').val()
+                let result = 0
+
+                switch (calculate) {
+                    case "+":
+                        result = num1 + num2;
+                        break;
+                    case "-":
+                    result = num1 - num2;
+                        break;
+                    case "*":
+                    result = num1 * num2;
+                        break;
+                    case "/":
+                    result = num1 / num2;
+                        break;
+
+                    default:
+                        break;
+                }
+                $('#show').val(result);
+            })
+
+
+        })
+    </script>
+</body>
+
+</html>

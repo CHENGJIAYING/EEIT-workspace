@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>resize</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        .resize{
+            width: 400px;
+            height: 300px;
+            position: absolute;
+        }
+        img{
+            width: 400px;
+            height: 300px;
+            position: absolute;
+        }
+        #p1{
+            border: 2px solid black;
+            padding: 10px;
+            margin: 10px;
+            width: 500px;
+            background-color: lightgreen;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>resize</h1>
+    </header>
+    <div class="container">
+        <p id="p1">this is p</p>
+        <div class="resize">
+            <img src="/lab08/car.jpg" alt="">
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            let p=$('#p1')
+            $('#p1').text(`innerWidth:${p.innerWidth},outerWidth:${p.outerWidth}`,)
+            resize_img()
+            
+
+
+
+
+            let windowW=$(window).width()
+            let windowH=$(window).height()
+            console.log(`window width:${windowW},window height:${windowH}`)
+            let divW=$('.resize').width()
+            let divH=$('.resize').height()
+            console.log(divH+","+divW)
+            let top=(windowH-divH)/2
+            let left=(windowW-divW)/2
+            $('.resize').css({
+                'left':left,
+                'top':top
+            })
+        
+
+            
+        })
+    </script>
+</body>
+</html>

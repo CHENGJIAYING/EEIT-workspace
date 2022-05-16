@@ -10,9 +10,9 @@ public interface UserDao {
 
 	public List<User> findAll();
 
-	public User findByUserid(int Userid);
+	public User findByUserid(int UserId);
 
-	public boolean deleteByUserid(int Userid);
+	public boolean deleteByUserid(int UserId);
 
 	public boolean doUpdate(User user);
 }
